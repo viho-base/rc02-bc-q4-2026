@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sunset Glow – Thưởng RC02 BC Q4.2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Patrick+Hand&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --bg:#FBF4F1; --panel:#FFFFFF; --panel2:#F7EDEA; --line:#EFE0DB; --line2:#E2CBC4;
+  --ink:#1F1B2E; --ink2:#4D4766; --ink3:#837C9C;
+  --stage:#FFE6B8; --stage2:#E98AAE; --stage-ink:#3A1838; --stage-ink2:#6E3F5E;
+  --sky1:#FFE9BF; --sky2:#FFC19A; --sky3:#F59BB0; --sea:#C9A2E0;
+  --pink:#E0526B; --pink-soft:#FDE6E6; --gold:#F29A0A; --gold-soft:#FFF0D6; --gold-ink:#8A5300;
+  --teal:#11907F; --teal-soft:#DCF3EF; --violet:#5A3ECF; --violet-soft:#ECE7FE; --bad:#C2413A; --bad-soft:#FBE5E3;
+  --field:#FFFFFF; --shadow:0 1px 2px rgba(31,27,46,.06),0 6px 18px rgba(31,27,46,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#15121E; --panel:#1E1A2B; --panel2:#272236; --line:#332D46; --line2:#463E5E;
+    --ink:#F1EEF9; --ink2:#C4BDDA; --ink3:#8D86A8;
+    --stage:#2B1B44; --stage2:#1C1430; --stage-ink:#FFFFFF; --stage-ink2:#E6C9D8; --sky1:#2B1B44; --sky2:#4A2347; --sky3:#6B2F48; --sea:#1C1430;
+    --pink-soft:#3D1A2A; --gold-soft:#3A2F0E; --gold-ink:#F7CF5C; --teal-soft:#123430; --violet-soft:#26204A; --bad-soft:#3B1C1A;
+    --field:#191526; --shadow:0 6px 18px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#15121E; --panel:#1E1A2B; --panel2:#272236; --line:#332D46; --line2:#463E5E;
+  --ink:#F1EEF9; --ink2:#C4BDDA; --ink3:#8D86A8;
+  --stage:#2B1B44; --stage2:#1C1430; --stage-ink:#FFFFFF; --stage-ink2:#E6C9D8; --sky1:#2B1B44; --sky2:#4A2347; --sky3:#6B2F48; --sea:#1C1430;
+  --pink-soft:#3D1A2A; --gold-soft:#3A2F0E; --gold-ink:#F7CF5C; --teal-soft:#123430; --violet-soft:#26204A; --bad-soft:#3B1C1A;
+  --field:#191526; --shadow:0 6px 18px rgba(0,0,0,.35);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 14.5px/1.55 "Be Vietnam Pro","Segoe UI",system-ui,-apple-system,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+img,svg{max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:16px 18px 64px}
+.hand{font-family:"Patrick Hand","Comic Sans MS",cursive}
+
+/* sân khấu */
+.stage{position:relative;overflow:hidden;border-radius:22px;color:var(--stage-ink);padding:26px 28px 22px;border:1px solid var(--line);box-shadow:var(--shadow);
+  background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 50%,var(--sky3) 78%,var(--sea) 100%);}
+.stage::before{content:"";position:absolute;right:2%;bottom:14%;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(255,240,180,.85) 0%,rgba(255,205,130,.40) 32%,rgba(255,170,120,0) 68%);pointer-events:none}
+.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:36%;background:repeating-linear-gradient(180deg,rgba(255,255,255,.28) 0 2px,transparent 2px 13px);-webkit-mask-image:linear-gradient(180deg,transparent,#000 70%);mask-image:linear-gradient(180deg,transparent,#000 70%);pointer-events:none}
+.stage-grid,.floor{z-index:1}
+.notes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.notes span{position:absolute;font-family:"Segoe UI Symbol","Noto Sans Symbols 2","Apple Symbols",serif;line-height:1;opacity:.55;animation:bob 5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
+@media (prefers-reduced-motion:reduce){.notes span{animation:none}}
+.notes span svg{display:block;width:100%;height:auto}
+.stage-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,1fr);gap:18px;align-items:end}
+.kicker{font-size:13px;color:var(--stage-ink2);margin:0 0 2px}
+.title{font-weight:900;font-size:clamp(46px,9vw,104px);line-height:.88;letter-spacing:-.045em;margin:0}
+.title .l2{display:block;padding-left:.55em;color:#fff;text-shadow:0 0 26px rgba(255,220,150,.95),0 0 6px rgba(255,190,120,.8),0 2px 0 rgba(58,24,56,.18)}
+.sub{margin:14px 0 0;color:var(--stage-ink2);max-width:46ch}
+.ticket{display:inline-flex;align-items:baseline;gap:6px;margin-top:16px;background:var(--stage-ink);color:#FFE9BF;border-radius:10px;padding:6px 14px;font-weight:700}
+.ticket b{font-size:24px;font-weight:900;letter-spacing:-.02em}
+.mascot-spot{position:relative;display:flex;flex-direction:column;align-items:center}
+.bubble{position:relative;background:#fff;color:#1F1B2E;border:2px solid #1F1B2E;border-radius:16px;padding:8px 14px;font-size:19px;line-height:1.25;max-width:270px;text-align:center;margin-bottom:8px;box-shadow:3px 3px 0 #1F1B2E}
+.bubble::after{content:"";position:absolute;left:50%;bottom:-9px;width:14px;height:14px;background:#fff;border-right:2px solid #1F1B2E;border-bottom:2px solid #1F1B2E;transform:translateX(-50%) rotate(45deg);border-radius:0 0 3px 0}
+.ball{width:150px;height:175px}
+.swing{transform-origin:50% 0;animation:swing 3.6s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){.swing{animation:none}}
+.bob,.rays{transform-box:fill-box;transform-origin:center}
+.bob{animation:bob 5s ease-in-out infinite}
+.rays{animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.bob,.rays{animation:none}}
+.floor{position:relative;margin-top:20px}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--stage-ink2)}
+.floor-top strong{color:var(--stage-ink);font-size:22px;font-weight:800;letter-spacing:-.01em}
+.track{position:relative;height:16px;border-radius:99px;background:rgba(58,24,56,.14);margin-top:8px;overflow:visible}
+.track .fill{position:absolute;inset:0 auto 0 0;border-radius:99px;background:linear-gradient(90deg,#FFD24A,#F59A3C 55%,#E0526B)}
+.track .pace{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--stage-ink);opacity:.8}
+.track .pace span{position:absolute;top:22px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;color:var(--stage-ink2)}
+.stage .status{position:absolute;right:16px;top:14px;z-index:1;font-size:12px;color:var(--stage-ink2);background:rgba(255,255,255,.5);border-radius:99px;padding:3px 10px}
+
+/* thanh tab */
+.tabs{display:flex;gap:4px;overflow-x:auto;margin:18px 0 6px;padding:4px;background:var(--panel);border:1px solid var(--line);border-radius:14px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{border:0;background:none;padding:8px 14px;border-radius:10px;cursor:pointer;color:var(--ink2);white-space:nowrap;font-weight:500}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);font-weight:700}
+.bar-row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:12px 0 4px}
+.seg{display:inline-flex;background:var(--panel2);border-radius:10px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:5px 12px;border-radius:8px;cursor:pointer;color:var(--ink2);font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--panel);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(31,27,46,.12)}
+
+/* khối */
+section.blk{margin-top:18px}
+.blk>h2{font-size:20px;font-weight:800;letter-spacing:-.015em;margin:0 0 4px}
+.blk>.lead{color:var(--ink3);margin:0 0 12px;font-size:13.5px;max-width:75ch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}
+.muted{color:var(--ink3)}
+.small{font-size:12.5px}
+.num{font-variant-numeric:tabular-nums}
+
+/* phòng & team */
+.dhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.dhead h3{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em}
+.dhead p{margin:0;color:var(--ink3);font-size:13px}
+.big{font-size:26px;font-weight:800;letter-spacing:-.02em;text-align:right;line-height:1.1}
+.big small{display:block;font-size:12.5px;font-weight:500;color:var(--ink3);letter-spacing:0}
+.pbar{position:relative;height:12px;border-radius:99px;background:var(--panel2);margin:12px 0 6px}
+.pbar .f{position:absolute;inset:0 auto 0 0;border-radius:99px;background:var(--ink)}
+.pbar .mk{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--line2)}
+.pbar.thin{height:8px;margin:6px 0 2px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;border-radius:99px;padding:2px 9px;background:var(--panel2);color:var(--ink2);white-space:nowrap}
+.chip.ok{background:var(--teal-soft);color:var(--teal)}
+.chip.gold{background:var(--gold-soft);color:var(--gold-ink)}
+.chip.pink{background:var(--pink-soft);color:var(--pink)}
+.chip.vio{background:var(--violet-soft);color:var(--violet)}
+.chip.bad{background:var(--bad-soft);color:var(--bad)}
+.teams{margin-top:12px;border-top:1px dashed var(--line);padding-top:6px}
+.trow{display:grid;grid-template-columns:minmax(120px,1.1fr) minmax(0,2fr) auto;gap:12px;align-items:center;padding:8px 0}
+.trow .tn{font-weight:700;display:flex;gap:8px;align-items:center}
+.trow .tn small{display:block;font-weight:400;color:var(--ink3);font-size:12px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.trow .tv{text-align:right;font-size:13px;white-space:nowrap}
+.trow .tv b{font-size:14.5px}
+
+/* bảng */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-weight:600;color:var(--ink3);font-size:12.5px;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+tfoot td{font-weight:800;border-top:2px solid var(--ink);border-bottom:0}
+.who{display:flex;align-items:center;gap:9px;font-weight:600;white-space:nowrap}
+.av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:12.5px;color:#fff;flex:none}
+.rank{font-weight:900;font-size:15px;color:var(--ink3);width:26px}
+.rank.r1{color:var(--gold)}
+
+/* bậc thưởng tháng */
+.tier{border-radius:14px;padding:14px;border:1px solid var(--line);background:var(--panel)}
+.tier h4{margin:0;font-size:16px;font-weight:800}
+.tier .amt{font-size:13px;color:var(--ink3);margin-bottom:8px}
+.tier ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.tier li{display:flex;justify-content:space-between;gap:8px;font-size:13.5px}
+.empty{color:var(--ink3);font-size:13px;font-style:italic}
+.ms-track{position:relative;height:10px;border-radius:99px;background:var(--panel2);margin:22px 0 22px}
+.ms-track .f{position:absolute;inset:0 auto 0 0;border-radius:99px}
+.ms-track .tk{position:absolute;top:-6px;width:3px;height:22px;border-radius:2px;background:var(--line2)}
+.ms-track .tk.hit{background:var(--ink)}
+.ms-track .tk span{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--ink3);white-space:nowrap}
+.ms-track .tk em{position:absolute;top:24px;left:50%;transform:translateX(-50%);font-size:11px;font-style:normal;font-weight:700;white-space:nowrap}
+
+/* thang mốc quý */
+.ladder{display:flex;flex-direction:column;gap:8px}
+.rung{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:start;padding:10px 12px;border-radius:12px;background:var(--panel2)}
+.rung .nm{font-weight:800}
+.rung .nm small{display:block;font-weight:500;color:var(--ink3);font-size:12px}
+.rung .ppl{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+
+/* form */
+label{display:block;font-size:12.5px;font-weight:600;color:var(--ink2)}
+input[type=text],input[type=date],input[type=number],input[type=email],select,textarea{width:100%;margin-top:4px;padding:9px 11px;border:1px solid var(--line2);border-radius:10px;background:var(--field);font-size:14px}
+textarea{min-height:120px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}
+.frm{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.chk{display:flex;gap:8px;align-items:center;font-weight:500;font-size:14px;color:var(--ink);margin-top:22px}
+.chk input{width:18px;height:18px}
+.btn{border:1px solid var(--line2);background:var(--panel);border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:600;font-size:13.5px}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.pink{background:var(--pink);color:#fff;border-color:var(--pink)}
+.btn.ghost{border-color:transparent;background:none;color:var(--ink2);padding:5px 8px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+details{margin-top:14px}
+summary{cursor:pointer;font-weight:700}
+.note{background:var(--gold-soft);color:var(--gold-ink);border-radius:12px;padding:10px 14px;font-size:13.5px;margin-top:12px}
+.note.vio{background:var(--violet-soft);color:var(--violet)}
+.demo-bar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--pink-soft);color:var(--pink);border-radius:12px;padding:9px 14px;margin-top:12px;font-weight:600;font-size:13.5px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:13.5px;z-index:50;max-width:min(92vw,520px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.lead-empty{display:grid;grid-template-columns:140px 1fr;gap:18px;align-items:center}
+.rules dt{font-weight:800;margin-top:12px}
+.rules dd{margin:2px 0 0;color:var(--ink2)}
+.foot{margin-top:28px;color:var(--ink3);font-size:12.5px;text-align:center}
+
+@media (max-width:760px){
+  .stage{padding:20px 18px}
+  .stage-grid{grid-template-columns:1fr}
+  .mascot-spot{flex-direction:row;align-items:flex-end;gap:6px}
+  .ball{width:100px;height:118px;order:-1}
+  .bubble{font-size:16px;text-align:left}
+  .bubble::after{display:none}
+  .stage::before{right:auto;left:0}
+  .trow{grid-template-columns:1fr auto}
+  .trow .pb{grid-column:1/-1;order:3}
+  .rung{grid-template-columns:1fr}
+  .lead-empty{grid-template-columns:1fr}
+  .big{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="stage" id="stage"></header>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <div id="demoBar"></div>
+  <main id="app"></main>
+  <p class="foot">Sunset Glow, chương trình thưởng RC02 BC quý 4.2026. Số liệu tạm tính, kết quả chi thưởng cuối cùng theo xác nhận của phòng nhân sự.</p>
+</div>
+<div id="toast" class="toast" hidden></div>
+<script>
+(function(){
+'use strict';
+
+/* ================= tiện ích ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const vnd=n=>Math.round(+n||0).toLocaleString('vi-VN');
+const num=s=>{const t=String(s==null?'':s).replace(/[^\d]/g,'');return t?parseInt(t,10):0;};
+const short=v=>{v=+v||0;if(v>=1e9)return (v/1e9).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tỷ';if(v>=1e6)return (v/1e6).toLocaleString('vi-VN',{maximumFractionDigits:1})+' tr';return vnd(v);};
+const bon=v=>{v=+v||0;if(!v)return '0';if(v>=1e6)return (v/1e6).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tr';return (v/1e3).toLocaleString('vi-VN')+'k';};
+const pct=(a,b)=>b>0?a/b:0;
+const pctTxt=p=>(p*100).toLocaleString('vi-VN',{maximumFractionDigits:1})+'%';
+const uid=()=>'d'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const todayIso=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());};
+const clone=o=>JSON.parse(JSON.stringify(o));
+const dmy=s=>s?s.slice(8,10)+'/'+s.slice(5,7):'';
+
+/* ================= quý & chính sách ================= */
+const MONTHS=['2026-10','2026-11','2026-12'];
+const Q_START=new Date(2026,9,1), Q_END=new Date(2026,11,31,23,59,59);
+const mName=mk=>'Tháng '+(+mk.slice(5));
+/* KPI, Goal, Out Performance tháng theo bậc (Level 1–6) */
+const LV={1:[50e6,80e6,110e6],2:[60e6,90e6,120e6],3:[80e6,110e6,160e6],4:[100e6,145e6,190e6],5:[125e6,175e6,250e6],6:[155e6,210e6,320e6]};
+const P={
+  bigMove:[{gt:500e6,b:500000},{gt:100e6,b:300000}],
+  renew:[{gt:500e6,b:500000},{gt:100e6,b:300000}],
+  base2:{first:1000000,next:300000,nextMax:4,convert:500000},
+  monthly:[{gt:800e6,b:1500000,name:'Standing Ovation'},{gt:500e6,b:1000000,name:'Encore'},{gt:300e6,b:500000,name:'Spotlight'}],
+  newStar:{maxLv:3,b:3000000},
+  teamMs:[{at:1.2e9,b:2000000},{at:800e6,b:1000000},{at:500e6,b:500000}],
+  breakthrough:[{at:1,b:10000000,name:'Đạt từ 100%'},{at:.8,b:5000000,name:'Đạt 80–99%'}],
+  qMs:[{at:4e9,b:30e6,name:'Hào Quang',all:true},{at:2e9,b:12e6,name:'Rực Sáng',all:true},{at:1e9,b:5e6,name:'Bình Minh',all:true},{at:800e6,b:2e6,name:'Hừng Đông',all:true},{at:500e6,b:1e6,name:'Nắng Sớm',all:false},{at:300e6,b:500000,name:'Khởi Nguyên',all:false}],
+  national:{mvp:[10e6,6e6,3e6],junior:[5e6,3e6,2e6],conq:3e6,conqMaxLv:4}
+};
+const isJr=m=>m.title==='Junior'||m.title==='Trainee';
+const KINDS={new:'Bán mới, mở rộng',renew:'Gia hạn từ 2 năm',renew1:'Gia hạn dưới 2 năm'};
+const B2={none:'Không',new:'Deal Base 2.0',convert:'Chuyển đổi 1.0 lên 2.0'};
+
+/* ================= dữ liệu mặc định ================= */
+const RAW=[
+['nynguyen','Ny Nguyễn','Nguyễn Thị Thùy Ny','ny.nguyen@base.vn','warriors','Junior',1],
+['huyle02','Huy Lê 02','Lê Trần Gia Huy','huy.le02@base.vn','warriors','Trainee',1],
+['khangnguyen02','Khang Nguyễn 02','Nguyễn Hồng Khang','khang.nguyen02@base.vn','warriors','Trainee',3],
+['phucnguyen','Phúc Nguyễn','Nguyễn Duy Phúc','phuc.nguyen@base.vn','ace','Middle',6],
+['uyenlam','Uyên Lâm','Lâm Thị Bảo Uyên','uyen.lam@base.vn','ace','Junior',4],
+['cuonglam','Cường Lâm','Lâm Mạnh Cường','cuong.lam@base.vn','ace','Junior',2],
+['hanhdo','Hạnh Đỗ','Đỗ Bích Hạnh','hanh.do@base.vn','ace','Trainee',1],
+['tiennguyen03','Tiên Nguyễn 03','Nguyễn Cẩm Tiên','tien.nguyen03@base.vn','ace','Trainee',5],
+['lannguyen06','Lan Nguyễn 06','Nguyễn Huỳnh Phương Lan','lan.nguyen06@base.vn','ace','Trainee',1],
+['thanhha02','Thành Hà 02','Hà Quí Thành','thanh.ha02@base.vn','ace','Trainee',1],
+['thaodo','Thảo Đỗ','Đỗ Hồ Phương Thảo','thao.do@base.vn','owners','Middle',6],
+['anhnguyen42','Anh Nguyễn 42','Nguyễn Tuấn Anh','anh.nguyen42@base.vn','owners','Junior',3],
+['thuytran02','Thúy Trần 02','Trần Lê Thanh Thúy','thuy.tran02@base.vn','owners','Junior',3],
+['ngocnguyen12','Ngọc Nguyễn 12','Nguyễn Bảo Ngọc','ngoc.nguyen12@base.vn','owners','Junior',1],
+['tiennguyen04','Tiên Nguyễn 04','Nguyễn Thị Thùy Tiên','tien.nguyen04@base.vn','owners','Trainee',1],
+['hatran','Hà Trần','Trần Cẩm Hà','ha.tran@base.vn','sky','Middle',6],
+['hauphan','Hậu Phan','Phan Nguyễn Trung Hậu','hau.phan@base.vn','sky','Junior',1],
+['yenphan03','Yến Phan 03','Phan Ngọc Yến','yen.phan03@base.vn','sky','Junior',4],
+['chuongvo','Chương Võ','Võ Nguyễn Nguyên Chương','chuong.vo@base.vn','sky','Junior',1],
+['linhnguyen03','Linh Nguyễn 03','Nguyễn Quách Thuỳ Linh','linh.nguyen03@base.vn','crew','Middle',6],
+['hoangho','Hoàng Hồ','Hồ Văn Hoàng','hoang.ho@base.vn','crew','Middle',5],
+['phongphan','Phong Phan','Phan Tuấn Phong','phong.phan@base.vn','crew','Junior',2],
+['lannguyen04','Lan Nguyễn 04','Nguyễn Thị Ngọc Lan','lan.nguyen04@base.vn','crew','Junior',3],
+['ngoctruong','Ngọc Trương','Trương Minh Ngọc','ngoc.truong@base.vn','crew','Junior',2],
+['anhnguyen44','Anh Nguyễn 44','Nguyễn Thị Minh Anh','anh.nguyen44@base.vn','crew','Junior',1],
+['dungle07','Dung Lê 07','Lê Nguyễn Thùy Dung','dung.le07@base.vn','crew','Trainee',1],
+['minhtran06','Minh Trần 06','Trần Giáp Minh','minh.tran06@base.vn','crew','Trainee',1]
+];
+const DEF={
+  v:2,
+  rcTarget:33815905019,
+  depts:[
+    {id:'d21',code:'PKD 2.1',name:'The ONE 2.0',head:'Phúc Nguyễn',target:11020000000},
+    {id:'d22',code:'PKD 2.2',name:'The CRM',head:'Tuấn Anh',target:8000000000}
+  ],
+  teams:[
+    {id:'ace',name:'The One',msName:'The One Solo',dept:'d21',leader:'Phúc Nguyễn',target:7500000000,color:'#5A3ECF',ms:true},
+    {id:'owners',name:'The Owners',dept:'d21',leader:'Thảo Đỗ',target:1500000000,color:'#D93D74',ms:true},
+    {id:'sky',name:'The Sky',dept:'d21',leader:'Hà Trần',target:1800000000,color:'#2C86D1',ms:true},
+    {id:'crew',name:'The Cr(E)w',msName:'The Crew',dept:'d22',leader:'Linh Nguyễn 03',target:5500000000,color:'#11907F',ms:true},
+    {id:'warriors',name:'Warriors',dept:'d22',leader:'Tuấn Anh',target:2500000000,color:'#D97A00',ms:false}
+  ],
+  members:RAW.map(r=>({id:r[0],name:r[1],full:r[2],email:r[3],team:r[4],title:r[5],lv:r[6]}))
+};
+function normCfg(c){
+  if(c&&(+c.v||0)<DEF.v)c=null;
+  const o=Object.assign(clone(DEF),c||{});
+  o.v=DEF.v;
+  if(!Array.isArray(o.members))o.members=clone(DEF.members);
+  if(!Array.isArray(o.teams))o.teams=clone(DEF.teams);
+  if(!Array.isArray(o.depts))o.depts=clone(DEF.depts);
+  o.members.forEach(m=>{m.lv=Math.min(6,Math.max(1,+m.lv||1));});
+  return o;
+}
+
+/* ================= trạng thái & lưu trữ ================= */
+/* ==== LINK APPS SCRIPT: dán link Web App (kết thúc bằng /exec) vào giữa hai dấu nháy ==== */
+const API_URL='https://script.google.com/a/macros/base.vn/s/AKfycbzUrSkc3t2V3IMocwCS2MOMqKya9JpN-Hcq3t1q5KIMCdS6G8bpltySZAHnowJPIU0iqA/exec';
+let cfg=normCfg(null), deals=[], db=null, mode='local', pendingRender=false, sheetInfo=null;
+const LKEY='rc02-last-dance-q4-2026';
+const ui={tab:'tong-quan',dept:'all',month:null,demo:false,editId:null,form:null,draft:null,dealMonth:'all'};
+(function(){const t=todayIso().slice(0,7);ui.month=MONTHS.includes(t)?t:(t<MONTHS[0]?MONTHS[0]:MONTHS[2]);})();
+
+function loadLocal(){try{const s=JSON.parse(localStorage.getItem(LKEY)||'null');if(s){if(Array.isArray(s.deals))deals=s.deals;if(s.cfg)cfg=normCfg(s.cfg);}}catch(e){}}
+function saveLocal(){try{localStorage.setItem(LKEY,JSON.stringify({deals,cfg}));}catch(e){}}
+function setStatus(){
+  const s=$('#syncChip');if(!s)return;
+  s.textContent=mode==='sheet'?('Đồng bộ Google Sheet'+(sheetInfo&&sheetInfo.at?' lúc '+sheetInfo.at:'')):mode==='db'?'Dữ liệu chung RC02':(mode==='err'?'Mất kết nối, đang dùng số đã lưu':'Đang lưu trên máy này');
+}
+async function loadSheet(manual){
+  try{
+    const r=await fetch(API_URL+(API_URL.indexOf('?')>=0?'&':'?')+'t='+Date.now());
+    const j=await r.json();
+    if(!j.ok)throw new Error(j.error||'Lỗi Apps Script');
+    deals=(j.deals||[]).map(d=>Object.assign({kind:'new',newAcc:false,base2:'none',note:'',customer:''},d));
+    if(j.config){try{cfg=normCfg(JSON.parse(j.config));}catch(e){}}
+    const t=new Date();sheetInfo={at:pad(t.getHours())+':'+pad(t.getMinutes()),cols:j.cols||{},sheet:j.sheet||''};
+    mode='sheet';saveLocal();renderSoon();
+    if(manual)toast('Đã lấy số mới nhất từ Google Sheet.');
+  }catch(e){mode='err';setStatus();toast('Chưa đọc được Google Sheet: '+(e&&e.message?e.message:'lỗi kết nối'));}
+}
+async function initDb(){
+  try{if(window.claude&&typeof window.claude.use==='function')db=await window.claude.use('db');}catch(e){db=null;}
+  if(!db){setStatus();return;}
+  mode='db';setStatus();
+  try{
+    db.collection('deals').onSnapshot(snap=>{deals=snap.docs.map(d=>Object.assign({},d.data(),{id:d.id}));saveLocal();renderSoon();},()=>{mode='err';setStatus();});
+    db.doc('config/main').onSnapshot(s=>{if(s.exists){const d=s.data();if(d&&d.json){try{cfg=normCfg(JSON.parse(d.json));}catch(e){}}}saveLocal();renderSoon();},()=>{});
+  }catch(e){mode='err';setStatus();}
+}
+function writeErr(e){toast(e&&e.code==='not_granted'?'Bạn đang ở quyền chỉ xem nên chưa lưu được. Nhờ chủ trang cấp quyền chỉnh sửa.':'Chưa lưu được, thử lại sau ít phút.');}
+async function putDeal(d){
+  if(API_URL){toast('Deal lấy từ Google Sheet, bạn sửa trực tiếp trong Sheet nhé.');return false;}
+  if(mode==='db'){try{await db.collection('deals').doc(d.id).set(d);return true;}catch(e){writeErr(e);return false;}}
+  const i=deals.findIndex(x=>x.id===d.id);if(i>=0)deals[i]=d;else deals.push(d);saveLocal();return true;
+}
+async function removeDeal(id){
+  if(API_URL){toast('Deal lấy từ Google Sheet, bạn xóa trực tiếp trong Sheet nhé.');return;}
+  if(mode==='db'){try{await db.collection('deals').doc(id).delete();}catch(e){writeErr(e);}return;}
+  deals=deals.filter(x=>x.id!==id);saveLocal();render();
+}
+async function putCfg(){
+  saveLocal();
+  if(API_URL){try{const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'saveConfig',json:JSON.stringify(cfg)})});const j=await r.json();if(!j.ok)throw new Error(j.error);}catch(e){toast('Chưa lưu được cài đặt lên Sheet: '+(e&&e.message?e.message:'lỗi kết nối'));}render();return;}
+  if(mode==='db'){try{await db.doc('config/main').set({json:JSON.stringify(cfg),at:Date.now()});}catch(e){writeErr(e);}}
+  render();
+}
+function renderSoon(){
+  const a=document.activeElement;
+  if(a&&/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)&&a.closest('#app')){pendingRender=true;return;}
+  pendingRender=false;render();
+}
+document.addEventListener('focusout',()=>{setTimeout(()=>{if(pendingRender)renderSoon();},50);});
+let toastT=null;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{t.hidden=true;},3600);}
+
+/* ================= dữ liệu mẫu ================= */
+let demoDeals=null;
+function makeDemo(){
+  let s=20261001;const rnd=()=>{s=(s*1103515245+12345)%2147483648;return s/2147483648;};
+  const out=[];const names=['Minh Phát','Hưng Thịnh','An Khang','Sao Việt','Đại Dương','Phú Gia','Nam Long','Bến Thành','Tân Á','Lộc Phát','Hoàng Gia','Kim Ngân','Thiên Long','Việt Tiến','Sông Hồng'];
+  cfg.members.forEach(m=>{
+    const n=2+Math.floor(rnd()*(m.lv*2+2));
+    for(let i=0;i<n;i++){
+      const day=1+Math.floor(rnd()*91);const dt=new Date(2026,9,day);
+      const base=(15+rnd()*70)*1e6*(0.6+m.lv*0.45);const v=Math.round((rnd()<.08?base*5:base)/1e5)*1e5;
+      const r=rnd();
+      out.push({id:'demo'+m.id+i,date:dt.getFullYear()+'-'+pad(dt.getMonth()+1)+'-'+pad(dt.getDate()),bc:m.id,customer:'Công ty '+names[Math.floor(rnd()*names.length)]+' '+(i+1),revenue:v,kind:r<.15?'renew':(r<.25?'renew1':'new'),newAcc:rnd()<.45,base2:rnd()<.12?'new':(rnd()<.06?'convert':'none'),note:'',ts:i});
+    }
+  });
+  return out;
+}
+const allDeals=()=>ui.demo?(demoDeals||(demoDeals=makeDemo())):deals;
+
+/* ================= tính toán ================= */
+function compute(){
+  const mem=new Map();const k=x=>String(x==null?'':x).toLowerCase().replace(/^@/,'').trim();
+  cfg.members.forEach(m=>{const e=k(m.email),pre=e.split('@')[0];[m.id,e,pre,pre.replace(/\./g,''),m.name,m.full].forEach(x=>{const kk=k(x);if(kk&&!mem.has(kk))mem.set(kk,m);});});
+  mem.find=x=>mem.get(k(x))||null;
+  const teamMap=new Map(cfg.teams.map(t=>[t.id,t]));
+  const R={rev:{},revQ:{},newAcc:{},newAccRev:{},team:{},teamQ:{},deptQ:{},total:0,unmatched:[],dealB:{},pay:{},monthly:{},newStar:{},nsRun:{},teamMs:{},qMs:{},bt:{},nDeals:0,teamMap,mem};
+  cfg.members.forEach(m=>{R.rev[m.id]=Object.fromEntries(MONTHS.map(k=>[k,0]));R.revQ[m.id]=0;R.newAcc[m.id]=0;R.newAccRev[m.id]=0;R.pay[m.id]={deal:0,base2:0,monthly:0,newStar:0,qMs:0};});
+  cfg.teams.forEach(t=>{R.team[t.id]=Object.fromEntries(MONTHS.map(k=>[k,0]));R.teamQ[t.id]=0;});
+  cfg.depts.forEach(d=>{R.deptQ[d.id]=0;});
+  const ds=allDeals().filter(d=>MONTHS.includes(String(d.date||'').slice(0,7))).slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:(a.ts||0)-(b.ts||0));
+  const b2n={};
+  ds.forEach(d=>{
+    const m=mem.find(d.bc),v=+d.revenue||0,mk=d.date.slice(0,7),info={big:0,bigName:'',b2:0,b2Name:''};
+    if(m){
+      R.nDeals++;
+      R.rev[m.id][mk]+=v;R.revQ[m.id]+=v;
+      if(d.newAcc){R.newAcc[m.id]++;R.newAccRev[m.id]+=v;}
+      const t=teamMap.get(m.team);
+      if(t){R.team[t.id][mk]+=v;R.teamQ[t.id]+=v;if(t.dept in R.deptQ)R.deptQ[t.dept]+=v;}
+      R.total+=v;
+      const tiers=d.kind==='renew'?P.renew:(d.kind==='new'?P.bigMove:null);
+      if(tiers){const h=tiers.find(x=>v>x.gt);if(h){info.big=h.b;info.bigName=d.kind==='renew'?'Gia hạn từ 2 năm':'Big Move';}}
+      if(d.base2==='new'){const n=b2n[m.id]=(b2n[m.id]||0)+1;info.b2=n===1?P.base2.first:(n<=1+P.base2.nextMax?P.base2.next:0);info.b2Name='Base 2.0, deal thứ '+n;}
+      else if(d.base2==='convert'){info.b2=P.base2.convert;info.b2Name='Chuyển đổi 1.0 lên 2.0';}
+      R.pay[m.id].deal+=info.big;R.pay[m.id].base2+=info.b2;
+    }
+    if(!m)R.unmatched.push(d);
+    R.dealB[d.id]=info;
+  });
+  MONTHS.forEach(mk=>{
+    R.monthly[mk]={};
+    cfg.members.forEach(m=>{const h=P.monthly.find(x=>R.rev[m.id][mk]>x.gt);if(h){R.monthly[mk][m.id]=h;R.pay[m.id].monthly+=h.b;}});
+    const el=cfg.members.filter(m=>m.lv<=P.newStar.maxLv&&R.rev[m.id][mk]>0).sort((a,b)=>R.rev[b.id][mk]-R.rev[a.id][mk]);
+    R.nsRun[mk]=el.slice(0,4);R.newStar[mk]=el[0]||null;
+    if(el[0])R.pay[el[0].id].newStar+=P.newStar.b;
+    R.teamMs[mk]={};cfg.teams.forEach(t=>{R.teamMs[mk][t.id]=t.ms===false?null:(P.teamMs.find(x=>R.team[t.id][mk]>=x.at)||null);});
+  });
+  cfg.members.forEach(m=>{const h=P.qMs.find(x=>(x.all||isJr(m))&&R.revQ[m.id]>=x.at)||null;R.qMs[m.id]=h;if(h)R.pay[m.id].qMs+=h.b;});
+  cfg.depts.forEach(d=>{const p=pct(R.deptQ[d.id],d.target);R.bt[d.id]={p,hit:P.breakthrough.find(x=>p>=x.at)||null};});
+  R.payOf=id=>{const p=R.pay[id];return p.deal+p.base2+p.monthly+p.newStar+p.qMs;};
+  R.teamPay=t=>MONTHS.reduce((s,mk)=>s+(R.teamMs[mk][t]?R.teamMs[mk][t].b:0),0);
+  R.bcTarget=cfg.depts.reduce((s,d)=>s+(+d.target||0),0);
+  return R;
+}
+function nextMs(m,v){
+  const up=P.qMs.filter(x=>(x.all||isJr(m))&&x.at>v).sort((a,b)=>a.at-b.at)[0];
+  return up?{...up,gap:up.at-v}:null;
+}
+const inDept=m=>{if(ui.dept==='all')return true;const t=cfg.teams.find(x=>x.id===m.team);return t&&t.dept===ui.dept;};
+const teamsIn=()=>cfg.teams.filter(t=>ui.dept==='all'||t.dept===ui.dept);
+const deptsIn=()=>cfg.depts.filter(d=>ui.dept==='all'||d.id===ui.dept);
+const teamOf=m=>cfg.teams.find(t=>t.id===m.team)||{name:'Chưa có team',color:'#8D86A8'};
+
+/* ================= linh vật: bóng disco ================= */
+function ball(mood){
+  const ink='#3A1838';
+  let eyes='<circle cx="-10" cy="-3" r="3.4" fill="'+ink+'"/><circle cx="10" cy="-3" r="3.4" fill="'+ink+'"/>';
+  let mouth='<path d="M-8 7 q8 7 16 0" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+  let arms='<path d="M-31 8 q-11 7 -6 18 M31 8 q11 7 6 18" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+  let extra='';
+  if(mood==='party'){
+    eyes='<path d="M-14 -2 q4 -7 8 0 M6 -2 q4 -7 8 0" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+    mouth='<path d="M-9 5 q9 13 18 0 z" fill="'+ink+'"/><path d="M-4 10 q4 3 8 0" fill="none" stroke="#E0526B" stroke-width="2.4" stroke-linecap="round"/>';
+    arms='<path d="M-30 2 q-14 -9 -11 -24 M30 2 q14 -9 11 -24" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+    extra='<path d="M-52 -40 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z M50 -46 l2.4 5 5 2.4 -5 2.4 -2.4 5 -2.4 -5 -5 -2.4 5 -2.4z" fill="#fff"/>';
+  }else if(mood==='sweat'){
+    mouth='<path d="M-7 10 q7 -5 14 0" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+    extra='<path d="M25 -18 q5 8 0 11 q-5 -3 0 -11z" fill="#8CC8F5" stroke="'+ink+'" stroke-width="1.5"/>';
+  }
+  let rays='';for(let i=0;i<12;i++){rays+='<path d="M-5.5 -38 L0 -51 L5.5 -38 Z" transform="rotate('+(i*30)+')" fill="'+(i%2?'#FFB020':'#FF8A3D')+'" stroke="'+ink+'" stroke-width="2.4" stroke-linejoin="round"/>';}
+  return '<svg class="ball" viewBox="-62 -62 124 124" aria-hidden="true"><defs><radialGradient id="sunf" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFF1A8"/><stop offset=".6" stop-color="#FFC93C"/><stop offset="1" stop-color="#FF9F2E"/></radialGradient></defs>'+
+    '<g class="bob">'+extra+'<g class="rays">'+rays+'</g>'+
+    '<circle r="32" fill="url(#sunf)" stroke="'+ink+'" stroke-width="3.2"/>'+
+    '<path d="M-19 -18 q6 -8 14 -9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>'+
+    eyes+mouth+'<circle cx="-18" cy="6" r="4.2" fill="#F48FA4" opacity=".75"/><circle cx="18" cy="6" r="4.2" fill="#F48FA4" opacity=".75"/>'+arms+
+  '</g></svg>';
+}
+function ballOld(mood){
+  const ink='#1F1B2E';
+  let eyes='<circle cx="-11" cy="-3" r="3.4" fill="'+ink+'"/><circle cx="11" cy="-3" r="3.4" fill="'+ink+'"/>';
+  let mouth='<path d="M-8 8 q8 7 16 0" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+  let arms='<path d="M-33 6 q-12 8 -6 20 M33 6 q12 8 6 20" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+  let extra='';
+  if(mood==='party'){
+    eyes='<path d="M-15 -2 q4 -7 8 0 M7 -2 q4 -7 8 0" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+    mouth='<path d="M-9 6 q9 13 18 0 z" fill="'+ink+'"/><path d="M-4 11 q4 3 8 0" fill="none" stroke="#D93D74" stroke-width="2.4" stroke-linecap="round"/>';
+    arms='<path d="M-32 0 q-14 -10 -10 -26 M32 0 q14 -10 10 -26" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+    extra='<path d="M-50 -38 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z M48 -44 l2.4 5 5 2.4 -5 2.4 -2.4 5 -2.4 -5 -5 -2.4 5 -2.4z" fill="#F2B10A"/>';
+  }else if(mood==='sweat'){
+    mouth='<path d="M-7 11 q7 -5 14 0" fill="none" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>';
+    extra='<path d="M27 -20 q5 8 0 11 q-5 -3 0 -11z" fill="#6FB7F2" stroke="'+ink+'" stroke-width="1.5"/>';
+  }
+  return '<svg class="ball" viewBox="-62 -92 124 150" aria-hidden="true"><g class="swing">'+
+    '<path d="M0 -92 V-36" stroke="#C9C1E6" stroke-width="2"/>'+extra+
+    '<defs><clipPath id="bclip"><circle r="33"/></clipPath></defs>'+
+    '<circle r="33" fill="#ECE8F7"/>'+
+    '<g clip-path="url(#bclip)" stroke="#B5ACD3" stroke-width="1.4" fill="none">'+
+      '<ellipse rx="33" ry="11"/><ellipse rx="33" ry="23"/><path d="M-33 0H33"/>'+
+      '<ellipse rx="11" ry="33"/><ellipse rx="23" ry="33"/><path d="M0 -33V33"/>'+
+      '<rect x="-23" y="-23" width="11" height="11" fill="#FFE08A" stroke="none" opacity=".9"/>'+
+      '<rect x="12" y="12" width="11" height="11" fill="#F7B7CD" stroke="none" opacity=".9"/>'+
+      '<rect x="12" y="-23" width="11" height="11" fill="#BFE9E1" stroke="none" opacity=".9"/>'+
+    '</g>'+
+    '<circle r="33" fill="none" stroke="'+ink+'" stroke-width="3.2"/>'+
+    '<path d="M-20 -20 q6 -8 14 -9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>'+
+    eyes+mouth+'<circle cx="-19" cy="6" r="4" fill="#F7B7CD" opacity=".8"/><circle cx="19" cy="6" r="4" fill="#F7B7CD" opacity=".8"/>'+
+    arms+
+    '<path d="M-10 32 l-4 16 M10 32 l6 15" stroke="'+ink+'" stroke-width="3" stroke-linecap="round"/>'+
+    '<path d="M-20 49 h9 M14 48 h9" stroke="'+ink+'" stroke-width="5" stroke-linecap="round"/>'+
+  '</g></svg>';
+}
+
+/* ================= giao diện ================= */
+const TABS=[['tong-quan','Tổng quan'],['thang','Thưởng tháng'],['quy','Thưởng quý'],['chi','Chi thưởng'],['deal','Deal'],['lead','Chuyển đổi lead'],['cai-dat','Nhân sự và cài đặt']];
+function av(m,s){const t=teamOf(m);return '<span class="av" style="background:'+esc(t.color)+(s?';width:'+s+'px;height:'+s+'px':'')+'">'+esc((m.name||'?').charAt(0))+'</span>';}
+function who(m,sub){return '<span class="who">'+av(m)+'<span>'+esc(m.name)+(sub?'<br><span class="muted small" style="font-weight:400">'+sub+'</span>':'')+'</span></span>';}
+function deptSeg(){
+  const opts=[['all','Toàn RC02']].concat(cfg.depts.map(d=>[d.id,d.name]));
+  return '<div class="seg" role="group" aria-label="Chọn phòng">'+opts.map(([v,l])=>'<button type="button" data-act="dept" data-v="'+esc(v)+'" aria-pressed="'+(ui.dept===v)+'">'+esc(l)+'</button>').join('')+'</div>';
+}
+function monthSeg(){return '<div class="seg" role="group" aria-label="Chọn tháng">'+MONTHS.map(mk=>'<button type="button" data-act="month" data-v="'+mk+'" aria-pressed="'+(ui.month===mk)+'">'+mName(mk)+'</button>').join('')+'</div>';}
+
+function renderStage(R){
+  const now=new Date();
+  const daysLeft=Math.max(0,Math.ceil((Q_END-now)/864e5));
+  const elapsed=Math.min(1,Math.max(0,(now-Q_START)/(Q_END-Q_START)));
+  const p=pct(R.total,R.bcTarget);
+  let mood='idle',line;
+  if(R.total===0){line='Nắng chiều đã lên. Ai chốt deal đầu tiên đây?';}
+  else if(p>=1){mood='party';line='Vượt target rồi! Cả RC02 rực sáng!';}
+  else if(p>=elapsed){mood='party';line='Đang đi trước nhịp '+pctTxt(p-elapsed)+'. Giữ phong độ nha!';}
+  else{mood='sweat';line='Hơi chậm nhịp '+pctTxt(elapsed-p)+'. Còn '+daysLeft+' ngày để bứt tốc.';}
+  const cloud='<svg viewBox="0 0 64 28"><path d="M8 26h46a8 8 0 0 0 0-16a12 12 0 0 0-22-5a9 9 0 0 0-15 6a7.5 7.5 0 0 0-9 15z" fill="#fff"/></svg>';
+  const bird='<svg viewBox="0 0 24 10"><path d="M1 8 q5.5 -7 11 0 q5.5 -7 11 0" fill="none" stroke="#3A1838" stroke-width="1.8" stroke-linecap="round"/></svg>';
+  const DECO=[[cloud,38,44,90,.7,0],[cloud,30,4,70,.6,1.5],[cloud,55,58,84,.55,3],[cloud,84,8,60,.6,2.2],[bird,44,16,22,.7,.4],[bird,48,24,15,.6,1.1],[bird,22,40,18,.55,2],[bird,70,30,14,.55,2.7]];
+  const notesHtml='<div class="notes" aria-hidden="true">'+DECO.map(n=>'<span style="left:'+n[1]+'%;top:'+n[2]+'%;width:'+n[3]+'px;opacity:'+n[4]+';animation-delay:'+n[5]+'s">'+n[0]+'</span>').join('')+'</div>';
+  $('#stage').innerHTML=notesHtml+
+   '<span class="status" id="syncChip"></span>'+
+   '<div class="stage-grid"><div>'+
+     '<p class="kicker">Last Dance, RC02 BC quý 4.2026</p>'+
+     '<h1 class="title">Sunset<span class="l2">Glow</span></h1>'+
+     '<p class="sub">Ánh hoàng hôn cuối năm của PKD 2.1 The ONE 2.0 và PKD 2.2 The CRM. Mỗi deal thêm một tia nắng, mỗi mốc là một lần bừng sáng.</p>'+
+     '<span class="ticket">'+(now<Q_START?'Mở màn sau':'Còn')+' <b class="num">'+(now<Q_START?Math.ceil((Q_START-now)/864e5):daysLeft)+'</b> ngày</span>'+
+   '</div><div class="mascot-spot"><div class="bubble hand">'+esc(line)+'</div>'+ball(mood)+'</div></div>'+
+   '<div class="floor"><div class="floor-top"><span>Doanh thu BC cả quý <strong class="num">'+short(R.total)+'</strong></span><span>Mục tiêu PKD 2.1 và 2.2: '+short(R.bcTarget)+' ('+pctTxt(p)+')</span></div>'+
+   '<div class="track"><div class="fill" style="width:'+Math.min(100,p*100).toFixed(2)+'%"></div><div class="pace" style="left:'+(elapsed*100).toFixed(2)+'%"><span>Nhịp hôm nay</span></div></div></div>';
+  setStatus();
+}
+
+function renderOverview(R){
+  const depts=deptsIn().map(d=>{
+    const v=R.deptQ[d.id],bt=R.bt[d.id];
+    const teams=cfg.teams.filter(t=>t.dept===d.id).map(t=>{
+      const tv=R.teamQ[t.id],tp=pct(tv,t.target);
+      return '<div class="trow"><div class="tn"><span class="dot" style="background:'+esc(t.color)+'"></span><span>'+esc(t.name)+'<small>Leader '+esc(t.leader)+'</small></span></div>'+
+        '<div class="pb"><div class="pbar thin"><div class="f" style="width:'+Math.min(100,tp*100).toFixed(2)+'%;background:'+esc(t.color)+'"></div></div></div>'+
+        '<div class="tv num"><b>'+short(tv)+'</b> / '+short(t.target)+'<br><span class="muted">'+pctTxt(tp)+'</span></div></div>';
+    }).join('');
+    const btChip=bt.hit?'<span class="chip ok">Breakthrough '+esc(bt.hit.name)+', thưởng '+bon(bt.hit.b)+'</span>':'<span class="chip">Còn '+short(Math.max(0,d.target*.8-v))+' để chạm mốc 80%</span>';
+    return '<div class="panel"><div class="dhead"><div><h3>'+esc(d.name)+'</h3><p>'+esc(d.code)+', trưởng phòng '+esc(d.head)+'</p></div>'+
+      '<div class="big num">'+short(v)+'<small>trên target '+short(d.target)+', đạt '+pctTxt(bt.p)+'</small></div></div>'+
+      '<div class="pbar"><div class="f" style="width:'+Math.min(100,bt.p*100).toFixed(2)+'%"></div><div class="mk" style="left:80%" title="Mốc 80%"></div></div>'+
+      btChip+'<div class="teams">'+teams+'</div></div>';
+  }).join('');
+
+  const ms=cfg.members.filter(inDept).slice().sort((a,b)=>R.revQ[b.id]-R.revQ[a.id]);
+  const rows=ms.map((m,i)=>{
+    const v=R.revQ[m.id],g=LV[m.lv][1]*3,hit=R.qMs[m.id],nx=nextMs(m,v);
+    return '<tr><td><span class="rank'+(i===0&&v>0?' r1':'')+'">'+(i+1)+'</span></td><td>'+who(m,esc(teamOf(m).name))+'</td>'+
+      '<td>'+esc(m.title)+', bậc '+m.lv+'</td><td class="r num"><b>'+short(v)+'</b></td><td class="r num">'+pctTxt(pct(v,g))+'</td>'+
+      '<td>'+(hit?'<span class="chip gold">'+esc(hit.name)+'</span>':'<span class="muted">Chưa có</span>')+'</td>'+
+      '<td class="small muted">'+(nx?'Còn '+short(nx.gap)+' tới '+esc(nx.name):'Đã chạm mốc cao nhất')+'</td></tr>';
+  }).join('');
+  return '<div class="bar-row">'+deptSeg()+'<span class="muted small">'+R.nDeals+' deal đã ghi nhận trong quý</span></div>'+
+    '<section class="blk"><h2>Tiến độ phòng và team</h2><p class="lead">Breakthrough Milestone tính theo target phòng: đạt 80–99% thưởng 5 triệu, đạt từ 100% thưởng 10 triệu. Vạch mờ trên thanh là mốc 80%.</p><div class="grid2">'+depts+'</div></section>'+
+    '<section class="blk"><h2>Bảng xếp hạng doanh thu quý</h2><p class="lead">% goal quý so với Goal tháng theo bậc nhân 3. Mốc quý Khởi Nguyên và Nắng Sớm chỉ dành cho Junior và Trainee.</p>'+
+    '<div class="panel scroll"><table><thead><tr><th>#</th><th>BC</th><th>Level</th><th class="r">Doanh thu quý</th><th class="r">% goal quý</th><th>Mốc quý</th><th>Mốc kế tiếp</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>';
+}
+
+function renderMonthly(R){
+  const mk=ui.month,ms=cfg.members.filter(inDept);
+  const tierCards=P.monthly.slice().reverse().map(t=>{
+    const ppl=ms.filter(m=>R.monthly[mk][m.id]===t).sort((a,b)=>R.rev[b.id][mk]-R.rev[a.id][mk]);
+    return '<div class="tier"><h4>'+esc(t.name)+'</h4><div class="amt">Doanh thu tháng trên '+short(t.gt)+', thưởng '+bon(t.b)+'</div>'+
+      (ppl.length?'<ul>'+ppl.map(m=>'<li>'+who(m)+'<b class="num">'+short(R.rev[m.id][mk])+'</b></li>').join('')+'</ul>':'<p class="empty">Chưa có ai chạm mốc này.</p>')+'</div>';
+  }).join('');
+  const near=ms.filter(m=>!R.monthly[mk][m.id]&&R.rev[m.id][mk]>=200e6).sort((a,b)=>R.rev[b.id][mk]-R.rev[a.id][mk]);
+  const ns=R.nsRun[mk].filter(inDept);
+  const nsHtml='<div class="panel"><div class="dhead"><div><h3>New Star</h3><p>BC bậc 1–3 có doanh thu tháng cao nhất RC02, thưởng '+bon(P.newStar.b)+'</p></div></div>'+
+    (R.nsRun[mk].length?'<ul style="list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:8px">'+R.nsRun[mk].map((m,i)=>'<li style="display:flex;justify-content:space-between;gap:8px;align-items:center">'+who(m,esc(teamOf(m).name)+', bậc '+m.lv)+'<span class="num">'+(i===0?'<span class="chip gold">Đang dẫn</span> ':'')+'<b>'+short(R.rev[m.id][mk])+'</b></span></li>').join('')+'</ul>':'<p class="empty">Chưa có doanh thu bậc 1–3 trong tháng.</p>')+
+    (ui.dept!=='all'&&!ns.length&&R.nsRun[mk].length?'<p class="small muted">New Star xét chung toàn RC02.</p>':'')+'</div>';
+  const maxT=1.2e9*1.15;
+  const teamRows=teamsIn().map(t=>{
+    const v=R.team[t.id][mk],hit=R.teamMs[mk][t.id],w=Math.min(100,v/maxT*100);
+    const ticks=P.teamMs.map(x=>'<span class="tk'+(v>=x.at?' hit':'')+'" style="left:'+(x.at/maxT*100).toFixed(2)+'%"><span>'+short(x.at)+'</span><em>'+bon(x.b)+'</em></span>').join('');
+    return '<div style="padding:4px 0 2px"><div class="dhead"><div class="tn" style="display:flex;gap:8px;align-items:center;font-weight:700"><span class="dot" style="background:'+esc(t.color)+'"></span>'+esc(t.name)+'</div>'+
+      '<div class="num"><b>'+short(v)+'</b> '+(t.ms===false?'<span class="chip">Chưa có trong chính sách milestone</span>':(hit?'<span class="chip ok">Thưởng team '+bon(hit.b)+'</span>':'<span class="chip">Chưa chạm mốc</span>'))+'</div></div>'+
+      '<div class="ms-track"><div class="f" style="width:'+w.toFixed(2)+'%;background:'+esc(t.color)+'"></div>'+ticks+'</div></div>';
+  }).join('');
+  const goalRows=ms.slice().sort((a,b)=>R.rev[b.id][mk]-R.rev[a.id][mk]).map(m=>{
+    const v=R.rev[m.id][mk],[k,g,o]=LV[m.lv];
+    const st=v>=o?'<span class="chip vio">Out Performance</span>':v>=g?'<span class="chip ok">Đạt Goal</span>':v>=k?'<span class="chip gold">Đạt KPI</span>':'<span class="chip">Chưa đạt KPI</span>';
+    return '<tr><td>'+who(m,esc(teamOf(m).name))+'</td><td class="r num"><b>'+short(v)+'</b></td><td class="r num muted">'+short(k)+'</td><td class="r num muted">'+short(g)+'</td><td class="r num muted">'+short(o)+'</td><td>'+st+'</td></tr>';
+  }).join('');
+  return '<div class="bar-row">'+deptSeg()+monthSeg()+'</div>'+
+    '<section class="blk"><h2>Mốc cá nhân '+mName(mk).toLowerCase()+'</h2><p class="lead">Mỗi người nhận mức cao nhất đạt được trong tháng.</p><div class="grid3">'+tierCards+'</div>'+
+    (near.length?'<p class="note">Sắp chạm Spotlight: '+near.map(m=>esc(m.name)+' ('+short(R.rev[m.id][mk])+')').join(', ')+'.</p>':'')+'</section>'+
+    '<section class="blk"><div class="grid2">'+nsHtml+'<div class="panel"><div class="dhead"><div><h3>Milestone team</h3><p>Team chỉ nhận thưởng một mốc cao nhất trong tháng</p></div></div>'+teamRows+'</div></div></section>'+
+    '<section class="blk"><h2>KPI, Goal và Out Performance</h2><p class="lead">Ngưỡng tháng theo bậc của từng BC.</p><div class="panel scroll"><table><thead><tr><th>BC</th><th class="r">Doanh thu tháng</th><th class="r">KPI</th><th class="r">Goal</th><th class="r">Out Perf.</th><th>Trạng thái</th></tr></thead><tbody>'+goalRows+'</tbody></table></div></section>';
+}
+
+function renderQuarter(R){
+  const ms=cfg.members.filter(inDept);
+  const bt=deptsIn().map(d=>{const b=R.bt[d.id];
+    return '<div class="panel"><div class="dhead"><div><h3>'+esc(d.name)+'</h3><p>Target quý '+short(d.target)+'</p></div><div class="big num">'+pctTxt(b.p)+'<small>'+short(R.deptQ[d.id])+'</small></div></div>'+
+    '<div class="pbar"><div class="f" style="width:'+Math.min(100,b.p*100).toFixed(2)+'%"></div><div class="mk" style="left:80%"></div></div>'+
+    (b.hit?'<span class="chip ok">'+esc(b.hit.name)+', thưởng phòng '+bon(b.hit.b)+'</span>':'<span class="chip">Chưa chạm mốc 80%</span>')+'</div>';}).join('');
+  const ladder=P.qMs.map(t=>{
+    const ppl=ms.filter(m=>R.qMs[m.id]===t).sort((a,b)=>R.revQ[b.id]-R.revQ[a.id]);
+    return '<div class="rung"><div class="nm">'+esc(t.name)+'<small>Từ '+short(t.at)+', thưởng '+bon(t.b)+(t.all?'':', chỉ Junior')+'</small></div><div class="ppl">'+
+      (ppl.length?ppl.map(m=>'<span class="chip gold">'+esc(m.name)+' '+short(R.revQ[m.id])+'</span>').join(''):'<span class="empty">Chưa có ai</span>')+'</div></div>';
+  }).join('');
+  const all=cfg.members.filter(m=>R.revQ[m.id]>0).sort((a,b)=>R.revQ[b.id]-R.revQ[a.id]);
+  const lst=(arr,amts,val)=>arr.length?'<ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px">'+arr.map((m,i)=>'<li style="display:flex;justify-content:space-between;gap:8px;align-items:center">'+who(m,esc(teamOf(m).name))+'<span class="num"><b>'+val(m)+'</b><br><span class="muted small">'+(amts[i]?bon(amts[i]):'')+'</span></span></li>').join('')+'</ul>':'<p class="empty">Chưa có dữ liệu.</p>';
+  const conq=cfg.members.filter(m=>m.lv<=P.national.conqMaxLv&&R.newAcc[m.id]>0).sort((a,b)=>R.newAcc[b.id]-R.newAcc[a.id]||R.newAccRev[b.id]-R.newAccRev[a.id]).slice(0,3);
+  return '<div class="bar-row">'+deptSeg()+'</div>'+
+    '<section class="blk"><h2>Breakthrough Milestone theo phòng</h2><p class="lead">Thưởng cho cả phòng khi doanh thu quý đạt 80–99% target (5 triệu) hoặc từ 100% (10 triệu).</p><div class="grid2">'+bt+'</div></section>'+
+    '<section class="blk"><h2>Mốc doanh thu quý cá nhân</h2><p class="lead">Chương trình toàn quốc. Mỗi người nhận một mốc cao nhất đạt được trong quý.</p><div class="panel"><div class="ladder">'+ladder+'</div></div></section>'+
+    '<section class="blk"><h2>Ứng viên giải toàn quốc</h2><p class="lead">Các giải này xét trên toàn quốc. Đây là thứ hạng trong RC02 để mọi người theo dõi, chưa phải kết quả trao giải.</p><div class="grid3">'+
+      '<div class="panel"><h3 style="margin:0">Sales MVP</h3><p class="muted small" style="margin:0">Mọi level, thưởng 10, 6, 3 triệu</p>'+lst(all.slice(0,3),P.national.mvp,m=>short(R.revQ[m.id]))+'</div>'+
+      '<div class="panel"><h3 style="margin:0">Best Junior Seller</h3><p class="muted small" style="margin:0">Junior và Trainee, thưởng 5, 3, 2 triệu</p>'+lst(all.filter(isJr).slice(0,3),P.national.junior,m=>short(R.revQ[m.id]))+'</div>'+
+      '<div class="panel"><h3 style="margin:0">Best Conqueror</h3><p class="muted small" style="margin:0">Bậc 1–4, nhiều khách hàng mới nhất, thưởng 3 triệu</p>'+lst(conq,[P.national.conq],m=>R.newAcc[m.id]+' khách mới')+'</div>'+
+    '</div></section>';
+}
+
+function renderPay(R){
+  const ms=cfg.members.filter(inDept).slice().sort((a,b)=>R.payOf(b.id)-R.payOf(a.id)||R.revQ[b.id]-R.revQ[a.id]);
+  const tot={deal:0,base2:0,monthly:0,newStar:0,qMs:0,all:0};
+  const rows=ms.map(m=>{const p=R.pay[m.id],s=R.payOf(m.id);for(const k in p)tot[k]+=p[k];tot.all+=s;
+    const c=v=>'<td class="r num'+(v?'':' muted')+'">'+bon(v)+'</td>';
+    return '<tr><td>'+who(m,esc(teamOf(m).name))+'</td>'+c(p.deal)+c(p.base2)+c(p.monthly)+c(p.newStar)+c(p.qMs)+'<td class="r num"><b>'+bon(s)+'</b></td></tr>';}).join('');
+  const tRows=teamsIn().map(t=>'<tr><td><span class="who"><span class="dot" style="background:'+esc(t.color)+'"></span>'+esc(t.name)+'</span></td>'+MONTHS.map(mk=>{const h=R.teamMs[mk][t.id];return '<td class="r num'+(h?'':' muted')+'">'+bon(h?h.b:0)+'</td>';}).join('')+'<td class="r num"><b>'+bon(R.teamPay(t.id))+'</b></td></tr>').join('');
+  const teamTot=teamsIn().reduce((s,t)=>s+R.teamPay(t.id),0);
+  const btTot=deptsIn().reduce((s,d)=>s+(R.bt[d.id].hit?R.bt[d.id].hit.b:0),0);
+  return '<div class="bar-row">'+deptSeg()+'</div>'+
+    '<section class="blk"><h2>Chi thưởng cá nhân</h2><p class="lead">Tạm tính đến hôm nay. Cột Deal gồm Big Move và gia hạn từ 2 năm. Giải toàn quốc chưa tính vào đây.</p>'+
+    '<div class="panel scroll"><table><thead><tr><th>BC</th><th class="r">Deal</th><th class="r">Base 2.0</th><th class="r">Thưởng tháng</th><th class="r">New Star</th><th class="r">Mốc quý</th><th class="r">Tổng</th></tr></thead><tbody>'+rows+'</tbody>'+
+    '<tfoot><tr><td>Cộng</td><td class="r num">'+bon(tot.deal)+'</td><td class="r num">'+bon(tot.base2)+'</td><td class="r num">'+bon(tot.monthly)+'</td><td class="r num">'+bon(tot.newStar)+'</td><td class="r num">'+bon(tot.qMs)+'</td><td class="r num">'+bon(tot.all)+'</td></tr></tfoot></table></div></section>'+
+    '<section class="blk"><div class="grid2"><div class="panel scroll"><h3 style="margin:0 0 6px">Thưởng milestone team</h3><table><thead><tr><th>Team</th>'+MONTHS.map(mk=>'<th class="r">'+mName(mk)+'</th>').join('')+'<th class="r">Tổng</th></tr></thead><tbody>'+tRows+'</tbody></table></div>'+
+    '<div class="panel"><h3 style="margin:0 0 6px">Tổng chi tạm tính</h3><table><tbody><tr><td>Cá nhân</td><td class="r num">'+bon(tot.all)+'</td></tr><tr><td>Milestone team</td><td class="r num">'+bon(teamTot)+'</td></tr><tr><td>Breakthrough phòng</td><td class="r num">'+bon(btTot)+'</td></tr></tbody><tfoot><tr><td>Tổng</td><td class="r num">'+bon(tot.all+teamTot+btTot)+'</td></tr></tfoot></table></div></div></section>';
+}
+
+function blankForm(){const t=todayIso();return {date:MONTHS.includes(t.slice(0,7))?t:'2026-10-01',bc:'',customer:'',revenue:'',kind:'new',newAcc:false,base2:'none',note:''};}
+function renderDeal(R){
+  if(!ui.form)ui.form=blankForm();
+  const f=ui.form;
+  const opts=cfg.teams.map(t=>'<optgroup label="'+esc(t.name)+'">'+cfg.members.filter(m=>m.team===t.id).map(m=>'<option value="'+esc(m.id)+'"'+(f.bc===m.id?' selected':'')+'>'+esc(m.name)+'</option>').join('')+'</optgroup>').join('');
+  const sel=(obj,val)=>Object.entries(obj).map(([k,l])=>'<option value="'+k+'"'+(val===k?' selected':'')+'>'+esc(l)+'</option>').join('');
+  const dis=(ui.demo||API_URL)?' disabled':'';
+  const list=allDeals().filter(d=>ui.dealMonth==='all'||String(d.date).slice(0,7)===ui.dealMonth).filter(d=>{const m=R.mem.find(d.bc);return !m||inDept(m);})
+    .slice().sort((a,b)=>a.date<b.date?1:a.date>b.date?-1:(b.ts||0)-(a.ts||0));
+  const rows=list.map(d=>{const m=R.mem.find(d.bc),b=R.dealB[d.id]||{};
+    const tags=[d.newAcc?'<span class="chip vio">Khách mới</span>':'',d.base2&&d.base2!=='none'?'<span class="chip pink">'+esc(B2[d.base2])+'</span>':''].join(' ');
+    const bt=[b.big?esc(b.bigName)+' '+bon(b.big):'',b.b2?esc(b.b2Name)+' '+bon(b.b2):''].filter(Boolean).join('<br>');
+    return '<tr><td class="num">'+dmy(d.date)+'</td><td>'+(m?who(m):'<span class="muted">'+esc(d.bc)+'</span>')+'</td><td>'+esc(d.customer)+(d.note?'<br><span class="muted small">'+esc(d.note)+'</span>':'')+'</td>'+
+      '<td class="r num"><b>'+short(d.revenue)+'</b></td><td class="small">'+esc(KINDS[d.kind]||'')+'<br>'+tags+'</td><td class="small">'+(bt||'<span class="muted">Không</span>')+'</td>'+
+      '<td class="r" style="white-space:nowrap">'+(ui.demo?'':'<button class="btn ghost" data-act="edit" data-v="'+esc(d.id)+'">Sửa</button><button class="btn ghost" data-act="del" data-v="'+esc(d.id)+'">Xóa</button>')+'</td></tr>';}).join('');
+  const mSeg='<div class="seg" role="group" aria-label="Lọc tháng">'+[['all','Cả quý']].concat(MONTHS.map(k=>[k,mName(k)])).map(([v,l])=>'<button type="button" data-act="dmonth" data-v="'+v+'" aria-pressed="'+(ui.dealMonth===v)+'">'+l+'</button>').join('')+'</div>';
+  return '<section class="blk"><h2>'+(ui.editId?'Sửa deal':'Ghi nhận deal')+'</h2><p class="lead">'+(API_URL?'Doanh thu đang lấy tự động từ Google Sheet'+(sheetInfo&&sheetInfo.sheet?' (tab '+esc(sheetInfo.sheet)+')':'')+', tự làm mới mỗi 5 phút. Muốn thêm hoặc sửa deal, bạn sửa trong Sheet.':'Nhập doanh thu thực thu chưa VAT.')+'</p>'+(API_URL?'<div class="btns" style="margin:0 0 12px"><button class="btn primary" data-act="refresh">Lấy số mới nhất từ Sheet</button></div>':'')+(R.unmatched.length?'<p class="note">'+R.unmatched.length+' deal chưa khớp được BC trong danh sách nhân sự: '+esc(Array.from(new Set(R.unmatched.map(d=>d.bc))).slice(0,8).join(', '))+'. Kiểm tra cột email BC trong Sheet hoặc thêm người này ở tab Nhân sự và cài đặt.</p>':'')+
+    '<div class="panel"><div class="frm">'+
+      '<label>Ngày thực thu<input type="date" data-f="date" min="2026-10-01" max="2026-12-31" value="'+esc(f.date)+'"'+dis+'></label>'+
+      '<label>BC<select data-f="bc"'+dis+'><option value="">Chọn BC</option>'+opts+'</select></label>'+
+      '<label>Khách hàng<input type="text" data-f="customer" value="'+esc(f.customer)+'" placeholder="Tên công ty"'+dis+'></label>'+
+      '<label>Doanh thu chưa VAT<input type="text" inputmode="numeric" data-f="revenue" value="'+(f.revenue?vnd(f.revenue):'')+'" placeholder="120.000.000"'+dis+'></label>'+
+      '<label>Loại deal<select data-f="kind"'+dis+'>'+sel(KINDS,f.kind)+'</select></label>'+
+      '<label>Sản phẩm Base 2.0<select data-f="base2"'+dis+'>'+sel(B2,f.base2)+'</select></label>'+
+      '<label class="chk"><input type="checkbox" data-f="newAcc"'+(f.newAcc?' checked':'')+dis+'> Khách hàng mới (New Account)</label>'+
+      '<label>Ghi chú<input type="text" data-f="note" value="'+esc(f.note)+'"'+dis+'></label>'+
+    '</div><div class="btns"><button class="btn primary" data-act="save"'+dis+'>'+(ui.editId?'Lưu thay đổi':'Lưu deal')+'</button>'+(ui.editId?'<button class="btn" data-act="cancel">Hủy sửa</button>':'')+'</div>'+
+    '<details><summary>Dán nhiều deal từ Google Sheet hoặc Excel</summary><p class="small muted">Mỗi dòng một deal, các cột theo thứ tự: Ngày, Email BC, Khách hàng, Doanh thu, Loại (mới, gia hạn 2 năm, gia hạn), Khách mới (x), Base 2.0 (mới, chuyển đổi). Ba cột cuối có thể bỏ trống.</p>'+
+      '<textarea id="paste" placeholder="05/10/2026	uyen.lam@base.vn	Công ty An Khang	150000000	mới	x	"'+dis+'></textarea><div class="btns"><button class="btn" data-act="import"'+dis+'>Nhập các dòng</button></div></details></div></section>'+
+    '<section class="blk"><div class="bar-row"><h2 style="margin:0">Danh sách deal</h2><div style="display:flex;gap:8px;flex-wrap:wrap">'+deptSeg()+mSeg+'</div></div>'+
+    '<div class="panel scroll">'+(rows?'<table><thead><tr><th>Ngày</th><th>BC</th><th>Khách hàng</th><th class="r">Doanh thu</th><th>Loại</th><th>Thưởng theo deal</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>':'<p class="empty">Chưa có deal nào. Ghi nhận deal đầu tiên ở form phía trên.</p>')+'</div></section>';
+}
+
+const NEWCUST=[{dept:'d21',name:'PKD 2.1, The One',members:10,checkin:177,confirm:321},{dept:'d22',name:'PKD 2.2, The Crew và Warriors',members:9,checkin:119,confirm:216}];
+function renderLead(){
+  const rows=NEWCUST.filter(x=>ui.dept==='all'||x.dept===ui.dept).map(x=>'<tr><td><b>'+esc(x.name)+'</b></td><td class="r num">'+x.members+'</td><td class="r num">'+x.checkin+'</td><td class="r num">'+x.confirm+'</td><td class="r num muted">Chờ dữ liệu</td></tr>').join('');
+  const tc=NEWCUST.filter(x=>ui.dept==='all'||x.dept===ui.dept).reduce((s,x)=>[s[0]+x.members,s[1]+x.checkin,s[2]+x.confirm],[0,0,0]);
+  return '<div class="bar-row">'+deptSeg()+'</div>'+
+    '<section class="blk"><h2>Mục tiêu khách mới quý 4</h2><p class="lead">Theo chính sách Last Dance. Cột thực đạt sẽ tự cập nhật khi có dữ liệu check-in và confirm.</p><div class="panel scroll"><table><thead><tr><th>Phòng</th><th class="r">Số thành viên</th><th class="r">Mục tiêu check-in</th><th class="r">Mục tiêu confirm</th><th class="r">Thực đạt</th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr><td>Cộng</td><td class="r num">'+tc[0]+'</td><td class="r num">'+tc[1]+'</td><td class="r num">'+tc[2]+'</td><td></td></tr></tfoot></table></div></section>'+
+    '<section class="blk"><div class="panel lead-empty">'+ball('idle')+'<div><h2 style="margin:0 0 6px">Tỷ lệ chuyển đổi lead</h2>'+
+    '<p style="margin:0 0 8px">Phần này đang chờ dữ liệu lead thô. Khi có dữ liệu, trang sẽ tính cho từng BC, team và phòng theo công thức: số lead chốt thành công chia cho số lead được giao.</p>'+
+    '<p class="muted small" style="margin:0">Dữ liệu cần có: mã lead, email BC được giao, ngày giao, trạng thái (đang xử lý, won, lost) và ngày chốt. Cần chốt thêm số lead tối thiểu để được xét và các mốc thưởng.</p></div></div></section>';
+}
+
+function renderSettings(){
+  if(!ui.draft)ui.draft=clone(cfg);
+  const d=ui.draft;
+  const tSel=v=>d.teams.map(t=>'<option value="'+esc(t.id)+'"'+(v===t.id?' selected':'')+'>'+esc(t.name)+'</option>').join('');
+  const titles=['Trainee','Junior','Middle','Senior'];
+  const mRows=d.members.map((m,i)=>'<tr><td><input type="text" data-d="members.'+i+'.name" value="'+esc(m.name)+'" style="min-width:130px"></td><td><input type="email" data-d="members.'+i+'.email" value="'+esc(m.email)+'" style="min-width:190px"></td>'+
+    '<td><select data-d="members.'+i+'.team">'+tSel(m.team)+'</select></td><td><select data-d="members.'+i+'.title">'+titles.map(t=>'<option'+(m.title===t?' selected':'')+'>'+t+'</option>').join('')+'</select></td>'+
+    '<td><select data-d="members.'+i+'.lv">'+[1,2,3,4,5,6].map(l=>'<option value="'+l+'"'+(+m.lv===l?' selected':'')+'>Bậc '+l+'</option>').join('')+'</select></td>'+
+    '<td class="r num small muted">'+short(LV[m.lv][1])+'</td><td><button class="btn ghost" data-act="mdel" data-v="'+i+'">Xóa</button></td></tr>').join('');
+  const dRows=d.depts.map((x,i)=>'<label>'+esc(x.code)+' '+esc(x.name)+'<input type="text" inputmode="numeric" data-d="depts.'+i+'.target" data-num="1" value="'+vnd(x.target)+'"></label>').join('');
+  const tRows=d.teams.map((x,i)=>'<label>Team '+esc(x.name)+'<input type="text" inputmode="numeric" data-d="teams.'+i+'.target" data-num="1" value="'+vnd(x.target)+'"></label>').join('');
+  return '<section class="blk"><h2>Target quý</h2><p class="lead">Target RC02 toàn khối là '+vnd(cfg.rcTarget)+' đ, gồm cả PKD 2.4 CD. Trang này theo dõi phần BC của PKD 2.1 và 2.2.</p><div class="panel"><div class="frm">'+dRows+tRows+'</div></div></section>'+
+    '<section class="blk"><h2>Nhân sự BC</h2><p class="lead">Goal tháng tự lấy theo bậc. Email dùng để ghép doanh thu khi nhập từ Sheet.</p><div class="panel scroll"><table><thead><tr><th>Tên</th><th>Email Base</th><th>Team</th><th>Level</th><th>Bậc</th><th class="r">Goal tháng</th><th></th></tr></thead><tbody>'+mRows+'</tbody></table>'+
+    '<div class="btns"><button class="btn" data-act="madd">Thêm nhân sự</button><button class="btn primary" data-act="csave"'+(ui.demo?' disabled':'')+'>Lưu cài đặt</button><button class="btn ghost" data-act="creset">Bỏ thay đổi</button></div></div></section>'+
+    '<section class="blk"><h2>Thể lệ đang áp dụng</h2><div class="panel"><dl class="rules">'+
+      '<dt>Big Move</dt><dd>Deal bán mới hoặc mở rộng trên 100 triệu thưởng 300k, trên 500 triệu thưởng 500k.</dd>'+
+      '<dt>Deal gia hạn từ 2 năm</dt><dd>Trên 100 triệu thưởng 300k, trên 500 triệu thưởng 500k.</dd>'+
+      '<dt>New Moves, Base 2.0</dt><dd>Deal won Base 2.0 đầu tiên của mỗi người 1 triệu, deal thứ 2 đến 5 mỗi deal 300k. Chuyển đổi từ 1.0 lên 2.0 mỗi deal 500k, không giới hạn. Hợp đồng tách nhỏ cho cùng một account chỉ tính một lần.</dd>'+
+      '<dt>Thưởng tháng cá nhân</dt><dd>Spotlight trên 300 triệu 500k, Encore trên 500 triệu 1 triệu, Standing Ovation trên 800 triệu 1,5 triệu. New Star: BC bậc 1–3 có doanh thu tháng cao nhất RC02 nhận 3 triệu.</dd>'+
+      '<dt>Milestone team tháng</dt><dd>Áp dụng cho The Crew, The One Solo (team The One), The Owners và The Sky. Từ 500 triệu 500k, từ 800 triệu 1 triệu, từ 1,2 tỷ 2 triệu. Team nhận một mốc cao nhất.</dd>'+
+      '<dt>Breakthrough Milestone phòng</dt><dd>Đạt 80–99% target quý 5 triệu, từ 100% 10 triệu.</dd>'+
+      '<dt>Mốc quý cá nhân</dt><dd>Junior: Khởi Nguyên 300 triệu 500k, Nắng Sớm 500 triệu 1 triệu. Mọi level: Hừng Đông 800 triệu 2 triệu, Bình Minh 1 tỷ 5 triệu, Rực Sáng 2 tỷ 12 triệu, Hào Quang 4 tỷ 30 triệu.</dd>'+
+      '<dt>Giải toàn quốc</dt><dd>Sales MVP 10, 6, 3 triệu. Best Junior Seller 5, 3, 2 triệu. Best Conqueror 3 triệu cho BC bậc 1–4 có nhiều New Account nhất; nếu bằng nhau, xét doanh thu từ New Account.</dd>'+
+    '</dl></div></section>'+
+    '<section class="blk"><h2>Dữ liệu</h2><div class="panel"><p style="margin:0 0 6px">'+(API_URL?'Doanh thu lấy từ Google Sheet. Cài đặt nhân sự và target lưu vào tab _CAU_HINH_WEB của Sheet.':mode==='db'?'Deal và cài đặt đang lưu chung cho mọi người mở trang này.':'Trang đang lưu trên trình duyệt này.')+'</p><div class="btns" style="margin-top:6px"><button class="btn" data-act="demo">'+(ui.demo?'Tắt dữ liệu mẫu':'Xem thử với dữ liệu mẫu')+'</button></div></div></section>';
+}
+
+function render(){
+  const R=compute();
+  renderStage(R);
+  $('#tabs').innerHTML=TABS.map(([id,l])=>'<button role="tab" type="button" aria-selected="'+(ui.tab===id)+'" data-act="tab" data-v="'+id+'">'+l+'</button>').join('');
+  $('#demoBar').innerHTML=ui.demo?'<div class="demo-bar"><span>Đang xem dữ liệu mẫu ngẫu nhiên, không lưu và không phải số thật.</span><button class="btn" data-act="demo">Tắt dữ liệu mẫu</button></div>':'';
+  const v={'tong-quan':renderOverview,thang:renderMonthly,quy:renderQuarter,chi:renderPay,deal:renderDeal,lead:renderLead,'cai-dat':renderSettings}[ui.tab];
+  $('#app').innerHTML=v(R);
+}
+
+/* ================= sự kiện ================= */
+function setPath(o,path,val){const p=path.split('.');let c=o;for(let i=0;i<p.length-1;i++){c=c[p[i]];if(c==null)return;}c[p[p.length-1]]=val;}
+document.addEventListener('input',e=>{
+  const el=e.target;
+  if(el.dataset.f&&ui.form){
+    const k=el.dataset.f;
+    if(k==='newAcc')ui.form.newAcc=el.checked;
+    else if(k==='revenue'){const n=num(el.value);ui.form.revenue=n;const pos=el.value.length-el.selectionStart;el.value=n?vnd(n):'';try{const np=Math.max(0,el.value.length-pos);el.setSelectionRange(np,np);}catch(_){}}
+    else ui.form[k]=el.value;
+  }
+  if(el.dataset.d&&ui.draft){
+    let v=el.value;if(el.dataset.num){v=num(v);el.value=v?vnd(v):'';}
+    if(/\.lv$/.test(el.dataset.d))v=+v;
+    setPath(ui.draft,el.dataset.d,v);
+  }
+});
+document.addEventListener('change',e=>{const el=e.target;if(el.dataset.f==='newAcc'&&ui.form)ui.form.newAcc=el.checked;if(el.dataset.d&&/\.lv$/.test(el.dataset.d))render();});
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const act=b.dataset.act,v=b.dataset.v;
+  if(act==='tab'){ui.tab=v;if(v!=='cai-dat')ui.draft=null;render();window.scrollTo({top:$('#tabs').offsetTop-8,behavior:'smooth'});return;}
+  if(act==='dept'){ui.dept=v;render();return;}
+  if(act==='month'){ui.month=v;render();return;}
+  if(act==='dmonth'){ui.dealMonth=v;render();return;}
+  if(act==='refresh'){loadSheet(true);return;}
+  if(act==='demo'){ui.demo=!ui.demo;render();toast(ui.demo?'Đang xem dữ liệu mẫu.':'Đã quay về dữ liệu thật.');return;}
+  if(act==='save'){
+    const f=ui.form;
+    if(!f.bc){toast('Chọn BC trước khi lưu.');return;}
+    if(!f.revenue){toast('Nhập doanh thu chưa VAT.');return;}
+    if(!MONTHS.includes(String(f.date).slice(0,7))){toast('Ngày cần nằm trong quý 4.2026.');return;}
+    const old=ui.editId?deals.find(x=>x.id===ui.editId):null;
+    const d={id:ui.editId||uid(),date:f.date,bc:f.bc,customer:String(f.customer||'').trim(),revenue:+f.revenue||0,kind:f.kind||'new',newAcc:!!f.newAcc,base2:f.base2||'none',note:String(f.note||'').trim(),ts:old?(old.ts||Date.now()):Date.now(),upd:Date.now()};
+    b.disabled=true;
+    if(await putDeal(d)){toast(ui.editId?'Đã lưu thay đổi.':'Đã lưu deal.');ui.editId=null;const keep=f.date;ui.form=blankForm();ui.form.date=keep;}
+    render();return;
+  }
+  if(act==='edit'){const d=deals.find(x=>x.id===v);if(!d)return;ui.editId=v;ui.form={date:d.date,bc:d.bc,customer:d.customer||'',revenue:d.revenue,kind:d.kind||'new',newAcc:!!d.newAcc,base2:d.base2||'none',note:d.note||''};render();window.scrollTo({top:$('#tabs').offsetTop-8,behavior:'smooth'});return;}
+  if(act==='cancel'){ui.editId=null;ui.form=blankForm();render();return;}
+  if(act==='del'){const d=deals.find(x=>x.id===v);if(!d)return;if(!confirm('Xóa deal '+(d.customer||'')+' ('+short(d.revenue)+')?'))return;await removeDeal(v);toast('Đã xóa deal.');return;}
+  if(act==='import'){
+    const txt=($('#paste')||{}).value||'';const byEmail=new Map(cfg.members.map(m=>[String(m.email).toLowerCase(),m]));
+    let ok=0,bad=[];
+    const lines=txt.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    for(const [i,line] of lines.entries()){
+      const c=line.split(/\t|;/).map(s=>s.trim());
+      let dt=c[0]||'';const m1=dt.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);if(m1)dt=m1[3]+'-'+pad(m1[2])+'-'+pad(m1[1]);
+      const m=byEmail.get(String(c[1]||'').toLowerCase());const rv=num(c[3]);
+      if(!/^\d{4}-\d{2}-\d{2}$/.test(dt)||!MONTHS.includes(dt.slice(0,7))||!m||!rv){bad.push(i+1);continue;}
+      const k=(c[4]||'').toLowerCase(),kind=/gia h[aạ]n.*2|gh2/.test(k)?'renew':(/gia h[aạ]n/.test(k)?'renew1':'new');
+      const na=/^(x|có|co|1|yes|y)$/i.test(c[5]||'');const b2s=(c[6]||'').toLowerCase();
+      const d={id:uid(),date:dt,bc:m.id,customer:c[2]||'',revenue:rv,kind,newAcc:na,base2:/chuy/.test(b2s)||/convert/.test(b2s)?'convert':(/m[oớ]i|new/.test(b2s)?'new':'none'),note:'Nhập từ bảng',ts:Date.now()+i,upd:Date.now()};
+      if(await putDeal(d))ok++;else break;
+    }
+    render();toast('Đã nhập '+ok+' deal'+(bad.length?'. Bỏ qua dòng '+bad.join(', ')+' vì thiếu ngày, email hoặc doanh thu.':'.'));return;
+  }
+  if(act==='madd'){ui.draft.members.push({id:'m'+Date.now().toString(36),name:'Nhân sự mới',full:'',email:'',team:ui.draft.teams[0].id,title:'Junior',lv:1});render();return;}
+  if(act==='mdel'){const m=ui.draft.members[+v];if(m&&confirm('Xóa '+m.name+' khỏi danh sách? Deal đã ghi nhận của người này sẽ không còn được tính.')){ui.draft.members.splice(+v,1);render();}return;}
+  if(act==='creset'){ui.draft=null;render();toast('Đã bỏ thay đổi.');return;}
+  if(act==='csave'){cfg=normCfg(ui.draft);ui.draft=null;await putCfg();toast('Đã lưu cài đặt.');return;}
+});
+
+/* ================= khởi động ================= */
+loadLocal();
+render();
+if(API_URL){loadSheet();setInterval(()=>{if(!document.hidden)loadSheet();},300000);}else initDb();
+setInterval(()=>{if(!pendingRender&&!document.hidden){const a=document.activeElement;if(!(a&&/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)))renderStage(compute());}},60000);
+})();
+</script>
+</body>
+</html>
